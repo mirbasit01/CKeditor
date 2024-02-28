@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Replace HTML textarea to Texteditor in HTML</title>
+    <script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    
+    <h1>Replace HTML textarea to Texteditor in HTML</h1>
+    <form>
+        <textarea name="content" id="content" rows="5" cols="80"></textarea>
+    </form>
+    <button onclick="appendContent()">Append Content</button>
+    <!-- Button to append content -->
+    <div id="appendedContent"></div>
+    <!-- Upper div where content will be appended -->
+    <script>
+        CKEDITOR.replace("content");
+        function appendContent() {
+            var editorContent = CKEDITOR.instances.content.getData();
+            var upperDiv = document.getElementById("appendedContent");
+            upperDiv.innerHTML += editorContent;
+
+            // Clear the value of the textarea
+            CKEDITOR.instances.content.setData("");
+        }
+    </script>
+</body>
+
+</html>
+<!-- upperDiv.innerHTML += editorContent; -->
